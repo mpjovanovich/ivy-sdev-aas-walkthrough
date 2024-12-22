@@ -50,14 +50,17 @@ export const getCourseNodes = (nodes, edges, semesterNodes) => {
 
   // Return nodes with calculated positions
   return nodes.map((node) => {
+    // All nodes need a parentId
+    if (!node.parentId) {
+      throw new Error("Node has no parentId: " + node.id);
+    }
+
     const nodeWithPosition = dagreGraph.node(node.id);
     return {
       ...node,
       position: {
-        x: node.parentId
-          ? // These will already be on the x value of their parents, so just add padding
-            SEMESTER_PADDING
-          : nodeWithPosition.x - NODE_WIDTH / 2,
+        // These will already be on the x value of their parents, so just add padding
+        x: SEMESTER_PADDING,
         y: nodeWithPosition.y - NODE_HEIGHT / 2,
       },
       targetPosition: "left",
