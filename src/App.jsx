@@ -38,7 +38,7 @@ function Flow() {
     styledSemesterNodes
   );
   const allNodes = [...styledSemesterNodes, ...styledCourseNodes];
-
+  //
   const [nodes, setNodes] = useState(allNodes);
   const [edges, setEdges] = useState(getCourseEdges(courseEdges));
 
@@ -46,49 +46,59 @@ function Flow() {
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
     [setNodes]
   );
+  const onEdgesChange = useCallback(
+    (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+    [setEdges]
+  );
   const onNodeDragStop = useCallback(
     (event, node) => {
-      // Only handle course nodes, not semester nodes
-      if (node.type !== "group") {
-        // Find which semester group (if any) the node is over
-        const semesterNodes = nodes.filter((n) => n.type === "group");
-        const targetSemester = semesterNodes.find((semester) => {
-          const semesterBounds = {
-            left: semester.position.x,
-            right: semester.position.x + SEMESTER_WIDTH,
-            top: semester.position.y,
-            bottom: semester.position.y + SEMESTER_HEIGHT,
-          };
+      if (node.type === "group") return;
 
-          return (
-            node.position.x > semesterBounds.left &&
-            node.position.x < semesterBounds.right &&
-            node.position.y > semesterBounds.top &&
-            node.position.y < semesterBounds.bottom
-          );
-        });
+      const draggedElement = document.querySelector(`[data-id="${node.id}"]`);
+      if (draggedElement) {
+        draggedElement.style.visibility = "hidden";
 
-        if (targetSemester) {
-          // Update the node's position to snap to a grid or specific position within the semester
-          setNodes((nds) =>
-            nds.map((n) => {
-              if (n.id === node.id) {
+        const elementUnderMouse = document.elementFromPoint(
+          event.clientX,
+          event.clientY
+        );
+        const semesterElement = elementUnderMouse?.closest(".semester-content");
+
+        draggedElement.style.visibility = "visible";
+
+        setNodes((nds) =>
+          nds.map((n) => {
+            if (n.id === node.id) {
+              if (semesterElement) {
+                const semesterParent = semesterElement.closest("[data-id]");
+                const semesterId = semesterParent?.getAttribute("data-id");
+
                 return {
                   ...n,
                   position: {
-                    x: targetSemester.position.x + SEMESTER_PADDING,
+                    x: SEMESTER_PADDING,
                     y: node.position.y,
                   },
-                  parentNode: targetSemester.id,
+                  parentId: semesterId,
+                };
+              } else {
+                // Just remove parentId and keep the current position
+                const { parentId, ...nodeWithoutParent } = n;
+                console.log(node.position);
+                return {
+                  ...nodeWithoutParent,
+                  // There is a weird bug where the position is updating relative to the parent node
+                  // I don't have time to fix it.
+                  position: node.position,
                 };
               }
-              return n;
-            })
-          );
-        }
+            }
+            return n;
+          })
+        );
       }
     },
-    [nodes]
+    [setNodes]
   );
 
   return (
@@ -96,6 +106,7 @@ function Flow() {
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
+      onEdgesChange={onEdgesChange}
       onNodeDragStop={onNodeDragStop}
       nodeTypes={nodeTypes}
       style={rfStyle}
