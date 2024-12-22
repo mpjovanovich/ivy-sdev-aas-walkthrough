@@ -1,36 +1,49 @@
-import ReactFlow, {
-  Controls,
+import { useCallback, useState } from "react";
+import {
+  ReactFlow,
+  applyEdgeChanges,
+  applyNodeChanges,
   Background,
-  useNodesState,
-  useEdgesState,
-} from "reactflow";
-import { initialNodes, initialEdges, semesters } from "./data/graph";
-import { getLayoutedElements } from "./utils/layout";
-import "reactflow/dist/style.css";
+} from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+import { courseNodes, courseEdges, semesterNodes } from "./data/graph";
+import { getCourseNodes, getSemesterNodes } from "./utils/layout";
 
-function App() {
-  const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
-    initialNodes,
-    initialEdges
+const rfStyle = {
+  backgroundColor: "#D0C0F7",
+};
+
+function Flow() {
+  const allNodes = [
+    ...getCourseNodes(courseNodes),
+    ...getSemesterNodes(semesterNodes),
+  ];
+  const [nodes, setNodes] = useState(allNodes);
+  const [edges, setEdges] = useState(courseEdges);
+
+  const onNodesChange = useCallback(
+    (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
+    [setNodes]
+  );
+  const onEdgesChange = useCallback(
+    (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+    [setEdges]
   );
 
-  const [nodes, setNodes, onNodesChange] = useNodesState(layoutedNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(layoutedEdges);
-
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
-      <ReactFlow
-        nodes={nodes}
-        edges={edges}
-        onNodesChange={onNodesChange}
-        onEdgesChange={onEdgesChange}
-        fitView
-      >
-        <Background />
-        <Controls />
-      </ReactFlow>
-    </div>
+    <ReactFlow
+      nodes={nodes}
+      edges={edges}
+      onNodesChange={onNodesChange}
+      onEdgesChange={onEdgesChange}
+      style={rfStyle}
+      attributionPosition="top-right"
+      nodesConnectable={false}
+      fitView
+    >
+      <Background />
+    </ReactFlow>
   );
 }
 
-export default App;
+export default Flow;
