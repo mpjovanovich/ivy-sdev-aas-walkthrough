@@ -4,34 +4,35 @@ import ReactFlow, {
   useNodesState,
   useEdgesState,
 } from "reactflow";
+import { initialNodes, initialEdges, semesters } from "./data/graph";
+import { getLayoutedElements } from "./utils/layout";
 import "reactflow/dist/style.css";
 
+const getNodeStyle = (node) => {
+  // TODO: style dynamically based on node attributes
+  return {
+    // background: node.fullStack ? "tan" : "white",
+    // border: "1px solid #ccc",
+    // borderRadius: "5px",
+    // padding: "10px",
+  };
+};
+
 function App() {
-  const initialNodes = [
-    {
-      id: "cs101",
-      position: { x: 100, y: 100 },
-      data: { label: "CS101: Intro to Programming" },
-    },
-    {
-      id: "cs201",
-      position: { x: 100, y: 200 },
-      data: { label: "CS201: Data Structures" },
-    },
-    {
-      id: "cs301",
-      position: { x: 100, y: 300 },
-      data: { label: "CS301: Algorithms" },
-    },
-  ];
+  const { nodes: layoutedNodes, edges: layoutedEdges } = getLayoutedElements(
+    initialNodes,
+    initialEdges
+  );
 
-  const initialEdges = [
-    { id: "e1-2", source: "cs101", target: "cs201" },
-    { id: "e2-3", source: "cs201", target: "cs301" },
-  ];
+  const styledNodes = layoutedNodes.map((node) => ({
+    ...node,
+    style: getNodeStyle(node),
+    targetPosition: "left",
+    sourcePosition: "right",
+  }));
 
-  const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
-  const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [nodes, setNodes, onNodesChange] = useNodesState(styledNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState(layoutedEdges);
 
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
