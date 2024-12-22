@@ -20,7 +20,6 @@ const SemesterNode = ({ data }) => {
           style={{
             minHeight: SEMESTER_HEIGHT,
             background: "rgba(255, 255, 255, 0.5)",
-            // border: "2px dashed #aaa",
             border: "1px solid #aaa",
             borderRadius: "4px",
             display: "flex",

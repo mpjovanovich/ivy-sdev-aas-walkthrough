@@ -8,7 +8,7 @@ export const defaultGroups = [
   { id: "SDEV140", parentId: "F2" },
 
   // S3
-  { id: "DBMS110", parentId: "F3" },
+  { id: "DBMS110", parentId: "S3" },
 
   // S4
 
@@ -21,26 +21,26 @@ export const defaultGroups = [
   // S8
 
   // Uncategorized
-  { id: "CPIN269", parentId: "F1" },
-  { id: "CPIN279", parentId: "F1" },
-  { id: "INFM209", parentId: "F1" },
-  { id: "SDEV148", parentId: "F1" },
-  { id: "SDEV155", parentId: "F1" },
-  { id: "SDEV160", parentId: "F1" },
-  { id: "SDEV200", parentId: "F1" },
-  { id: "SDEV210", parentId: "F1" },
-  { id: "SDEV230", parentId: "F1" },
-  { id: "SDEV240", parentId: "F1" },
-  { id: "SDEV245", parentId: "F1" },
-  { id: "SDEV248", parentId: "F1" },
-  { id: "SDEV250", parentId: "F1" },
-  { id: "SDEV255", parentId: "F1" },
-  { id: "SDEV257", parentId: "F1" },
-  { id: "SDEV260", parentId: "F1" },
-  { id: "SDEV264", parentId: "F1" },
-  { id: "SDEV265", parentId: "F1" },
-  { id: "SDEV27X", parentId: "F1" },
-  { id: "SVAD150", parentId: "F1" },
-  { id: "VISC104", parentId: "F1" },
-  { id: "VISC202", parentId: "F1" },
+  { id: "CPIN269", parentId: "" },
+  { id: "CPIN279", parentId: "" },
+  { id: "INFM209", parentId: "" },
+  { id: "SDEV148", parentId: "" },
+  { id: "SDEV155", parentId: "" },
+  { id: "SDEV160", parentId: "" },
+  { id: "SDEV200", parentId: "" },
+  { id: "SDEV210", parentId: "" },
+  { id: "SDEV230", parentId: "" },
+  { id: "SDEV240", parentId: "" },
+  { id: "SDEV245", parentId: "" },
+  { id: "SDEV248", parentId: "" },
+  { id: "SDEV250", parentId: "" },
+  { id: "SDEV255", parentId: "" },
+  { id: "SDEV257", parentId: "" },
+  { id: "SDEV260", parentId: "" },
+  { id: "SDEV264", parentId: "" },
+  { id: "SDEV265", parentId: "" },
+  { id: "SDEV27X", parentId: "" },
+  { id: "SVAD150", parentId: "" },
+  { id: "VISC104", parentId: "" },
+  { id: "VISC202", parentId: "" },
 ];

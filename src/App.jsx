@@ -13,7 +13,11 @@ import {
   getCourseEdges,
   getSemesterNodes,
 } from "./utils/layout";
-import { SEMESTER_WIDTH, SEMESTER_HEIGHT } from "./components/SemesterNode";
+import {
+  SEMESTER_WIDTH,
+  SEMESTER_HEIGHT,
+  SEMESTER_PADDING,
+} from "./components/SemesterNode";
 import SemesterNode from "./components/SemesterNode";
 
 const nodeTypes = {
@@ -72,7 +76,7 @@ function Flow() {
                 return {
                   ...n,
                   position: {
-                    x: targetSemester.position.x + 20,
+                    x: targetSemester.position.x + SEMESTER_PADDING,
                     y: node.position.y,
                   },
                   parentNode: targetSemester.id,

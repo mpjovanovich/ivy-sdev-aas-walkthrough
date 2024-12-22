@@ -49,29 +49,33 @@ export const getCourseNodes = (nodes, edges, semesterNodes) => {
   dagre.layout(dagreGraph);
 
   // Return nodes with calculated positions
-  return nodes.map((node) => {
-    // All nodes need a parentId
-    if (!node.parentId) {
-      throw new Error("Node has no parentId: " + node.id);
-    }
-
-    const nodeWithPosition = dagreGraph.node(node.id);
-    return {
-      ...node,
-      position: {
-        // These will already be on the x value of their parents, so just add padding
-        x: SEMESTER_PADDING,
-        y: nodeWithPosition.y - NODE_HEIGHT / 2,
-      },
-      targetPosition: "left",
-      sourcePosition: "right",
-      style: {
-        width: NODE_WIDTH,
-        minheight: NODE_HEIGHT,
-      },
-      //   extent: "parent", // This locks it into the parent's bounding box, so it's not quite what we want.
-    };
-  });
+  return (
+    nodes
+      // Ignore anything that doesn't currently have a semester assigned to it.
+      .filter((node) => node.parentId)
+      .map((node) => {
+        const nodeWithPosition = dagreGraph.node(node.id);
+        return {
+          ...node,
+          position: {
+            // These will already be on the x value of their parents, so just add padding
+            x: SEMESTER_PADDING,
+            y: nodeWithPosition.y - NODE_HEIGHT / 2,
+          },
+          targetPosition: "left",
+          sourcePosition: "right",
+          style: {
+            borderWidth: node.programCore.includes("AAS") ? 3 : 1,
+            background: node.programCore.includes("fullStack")
+              ? // TODO: better colors
+                "#ddd"
+              : "",
+            width: NODE_WIDTH,
+            minheight: NODE_HEIGHT,
+          },
+        };
+      })
+  );
 };
 
 export const getSemesterNodes = (nodes) => {
