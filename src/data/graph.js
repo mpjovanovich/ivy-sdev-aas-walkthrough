@@ -1,12 +1,13 @@
+// Theser are "sub flows": https://reactflow.dev/learn/layouting/sub-flows
 export const semesters = [
-  { id: "F1", label: "Semester 1 (Fall)", x: 0 },
-  { id: "S2", label: "Semester 2 (Spring)", x: 300 },
-  { id: "F3", label: "Semester 3 (Fall)", x: 600 },
-  { id: "S4", label: "Semester 4 (Spring)", x: 900 },
-  { id: "F5", label: "Semester 5 (Fall)", x: 1200 },
-  { id: "S6", label: "Semester 6 (Spring)", x: 1500 },
-  { id: "F7", label: "Semester 7 (Fall)", x: 1800 },
-  { id: "S8", label: "Semester 8 (Spring)", x: 2100 },
+  { id: "F1", type: "group", data: { label: "Semester 1 (Fall)" } },
+  { id: "S2", type: "group", data: { label: "Semester 2 (Spring)" } },
+  { id: "F3", type: "group", data: { label: "Semester 3 (Fall)" } },
+  { id: "S4", type: "group", data: { label: "Semester 4 (Spring)" } },
+  { id: "F5", type: "group", data: { label: "Semester 5 (Fall)" } },
+  { id: "S6", type: "group", data: { label: "Semester 6 (Spring)" } },
+  { id: "F7", type: "group", data: { label: "Semester 7 (Fall)" } },
+  { id: "S8", type: "group", data: { label: "Semester 8 (Spring)" } },
 ];
 
 // TODO: corequisites should have dotted edges
@@ -120,7 +121,7 @@ export const initialNodes = [
 export const initialEdges = [
   { id: "e-110-255", source: "DBMS110", target: "SDEV255" }, // This is a coreq, but that's ridiculous
   { id: "e-120-140", source: "SDEV120", target: "SDEV140" },
-  { id: "e-120-153", source: "SDEV120", target: "SDEV153" },
+  { id: "e-120-153", source: "SDEV120", target: "SDEV153", corequisite: true },
   { id: "e-120-255", source: "SDEV120", target: "SDEV255" }, // This is a coreq, but that's ridiculous
   //   { id: "e-140-160", source: "SDEV140", target: "SDEV160" },
   //   { id: "e-140-200", source: "SDEV140", target: "SDEV200" },
