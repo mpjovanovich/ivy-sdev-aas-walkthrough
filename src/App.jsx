@@ -7,7 +7,12 @@ import {
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { courseNodes, courseEdges, semesterNodes } from "./data/graph";
-import { getCourseNodes, getSemesterNodes } from "./utils/layout";
+import { defaultGroups } from "./data/defaultGroups";
+import {
+  getCourseNodes,
+  getCourseEdges,
+  getSemesterNodes,
+} from "./utils/layout";
 import { SEMESTER_WIDTH, SEMESTER_HEIGHT } from "./components/SemesterNode";
 import SemesterNode from "./components/SemesterNode";
 
@@ -16,12 +21,22 @@ const nodeTypes = {
 };
 
 function Flow() {
-  const allNodes = [
-    ...getCourseNodes(courseNodes),
-    ...getSemesterNodes(semesterNodes),
-  ];
+  const styledSemesterNodes = getSemesterNodes(semesterNodes);
+  const courseNodesWithGroups = courseNodes.map((node) => {
+    return {
+      ...node,
+      parentId: defaultGroups.find((g) => g.id === node.id)?.parentId,
+    };
+  });
+  const styledCourseNodes = getCourseNodes(
+    courseNodesWithGroups,
+    courseEdges,
+    styledSemesterNodes
+  );
+  const allNodes = [...styledSemesterNodes, ...styledCourseNodes];
+
   const [nodes, setNodes] = useState(allNodes);
-  const [edges, setEdges] = useState(courseEdges);
+  const [edges, setEdges] = useState(getCourseEdges(courseEdges));
 
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
@@ -82,7 +97,6 @@ function Flow() {
       style={rfStyle}
       attributionPosition="top-right"
       nodesConnectable={false}
-      edgesUpdatable={false}
       fitView
     >
       <Background />
