@@ -96,10 +96,16 @@ function Flow() {
     [setNodes]
   );
 
+  const visibleEdges = edges.filter((edge) => {
+    const sourceNode = nodes.find((n) => n.id === edge.source);
+    const targetNode = nodes.find((n) => n.id === edge.target);
+    return sourceNode?.parentId && targetNode?.parentId;
+  });
+
   return (
     <ReactFlow
       nodes={nodes}
-      edges={edges}
+      edges={visibleEdges}
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
       onNodeDragStop={onNodeDragStop}
