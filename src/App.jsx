@@ -13,33 +13,29 @@ import {
   getCourseEdges,
   getSemesterNodes,
 } from "./utils/layout";
-import {
-  SEMESTER_WIDTH,
-  SEMESTER_HEIGHT,
-  SEMESTER_PADDING,
-} from "./components/SemesterNode";
+import { SEMESTER_PADDING } from "./components/SemesterNode";
 import SemesterNode from "./components/SemesterNode";
 
 const nodeTypes = {
-  group: SemesterNode,
+  semester: SemesterNode,
 };
 
 function Flow() {
-  const styledSemesterNodes = getSemesterNodes(semesterNodes);
   const courseNodesWithGroups = courseNodes.map((node) => {
     return {
       ...node,
       parentId: defaultGroups.find((g) => g.id === node.id)?.parentId,
     };
   });
-  const styledCourseNodes = getCourseNodes(
+  const positionedSemesterNodes = getSemesterNodes(semesterNodes);
+  const positionedCourseNodes = getCourseNodes(
     courseNodesWithGroups,
-    courseEdges,
-    styledSemesterNodes
+    positionedSemesterNodes
   );
-  const allNodes = [...styledSemesterNodes, ...styledCourseNodes];
-  //
-  const [nodes, setNodes] = useState(allNodes);
+  const [nodes, setNodes] = useState([
+    ...positionedSemesterNodes,
+    ...positionedCourseNodes,
+  ]);
   const [edges, setEdges] = useState(getCourseEdges(courseEdges));
 
   const onNodesChange = useCallback(

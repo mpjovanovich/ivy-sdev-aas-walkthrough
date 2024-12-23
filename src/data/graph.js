@@ -1,25 +1,57 @@
 // Theser are "sub flows": https://reactflow.dev/learn/layouting/sub-flows
 export const semesterNodes = [
-  { id: "F1", type: "group", data: { label: "Semester 1 (Fall)" } },
-  { id: "F2", type: "group", data: { label: "Semester 2 (Fall)" } },
-  { id: "S3", type: "group", data: { label: "Semester 3 (Spring)" } },
-  { id: "S4", type: "group", data: { label: "Semester 4 (Spring)" } },
-  { id: "F5", type: "group", data: { label: "Semester 5 (Fall)" } },
-  { id: "F6", type: "group", data: { label: "Semester 6 (Fall)" } },
-  { id: "S7", type: "group", data: { label: "Semester 7 (Spring)" } },
-  { id: "S8", type: "group", data: { label: "Semester 8 (Spring)" } },
+  { id: "F1", type: "semester", data: { label: "S1 (Fall)" } },
+  { id: "F2", type: "semester", data: { label: "S2 (Fall)" } },
+  { id: "S3", type: "semester", data: { label: "S3 (Spring)" } },
+  { id: "S4", type: "semester", data: { label: "S4 (Spring)" } },
+  { id: "F5", type: "semester", data: { label: "S5 (Fall)" } },
+  { id: "F6", type: "semester", data: { label: "S6 (Fall)" } },
+  { id: "S7", type: "semester", data: { label: "S7 (Spring)" } },
+  { id: "S8", type: "semester", data: { label: "S8 (Spring)" } },
 ];
 
 export const courseNodes = [
+  // Gen Ed
+  {
+    id: "COMM101",
+    programCore: ["AAS"],
+    programElective: [],
+    data: { label: "COMM 101 - Public Speaking" },
+  },
+  {
+    id: "ENGL111",
+    programCore: ["AAS"],
+    programElective: [],
+    data: { label: "ENGL 111 - English Composition" },
+  },
+  {
+    id: "MATH136",
+    programCore: ["AAS"],
+    programElective: [],
+    data: { label: "MATH 136 - College Algebra" },
+  },
+  {
+    id: "HUMANITIES",
+    programCore: ["AAS"],
+    programElective: [],
+    data: { label: "Humanities Elective" },
+  },
+  {
+    id: "SCIENCE",
+    programCore: ["AAS"],
+    programElective: [],
+    data: { label: "Science Elective" },
+  },
+  // Technical
   {
     id: "CPIN269",
-    programCore: [],
+    programCore: ["AAS"],
     programElective: [],
     data: { label: "CPIN 269 - Information Technology Project Management" },
   },
   {
     id: "CPIN279",
-    programCore: [],
+    programCore: ["AAS"],
     programElective: [],
     data: { label: "CPIN 279 - Information Technology Capstone" },
   },
@@ -31,14 +63,14 @@ export const courseNodes = [
   },
   {
     id: "INFM109",
-    programCore: [],
+    programCore: ["AAS"],
     programElective: [],
     data: { label: "INFM 109 - Informatics and Human-Computer Interaction" },
   },
   {
     id: "INFM209",
     programCore: [],
-    programElective: [],
+    programElective: ["AAS"],
     data: { label: "INFM 209 - Informatics and Human-Computer Interaction" },
   },
   {
@@ -56,7 +88,7 @@ export const courseNodes = [
   {
     id: "SDEV148",
     programCore: [],
-    programElective: [],
+    programElective: ["AAS"],
     data: { label: "SDEV 148 - Intro to Game Development" },
   },
   {
@@ -73,50 +105,50 @@ export const courseNodes = [
   },
   {
     id: "SDEV160",
-    programCore: [],
+    programCore: ["AAS", "fullStack"],
     programElective: [],
     data: { label: "SDEV 160 - Programming With Data" },
   },
   {
     id: "SDEV200",
     programCore: [],
-    programElective: [],
+    programElective: ["AAS"],
     data: { label: "SDEV 200 - Java" },
   },
   {
     id: "SDEV210",
     programCore: [],
-    programElective: [],
+    programElective: ["AAS"],
     data: { label: "SDEV 210 - Systems Programming with Rust" },
   },
   {
     id: "SDEV230",
     programCore: [],
-    programElective: [],
+    programElective: ["AAS"],
     data: { label: "SDEV 230 - C++" },
   },
   {
     id: "SDEV240",
     programCore: [],
-    programElective: [],
+    programElective: ["AAS"],
     data: { label: "SDEV 240 - C#" },
   },
   {
     id: "SDEV245",
     programCore: [],
-    programElective: [],
+    programElective: ["AAS"],
     data: { label: "SDEV 245 - Security and Secure Coding" },
   },
   {
     id: "SDEV248",
     programCore: [],
-    programElective: [],
+    programElective: ["AAS"],
     data: { label: "SDEV 248 - Advanced Simulation and Game Design" },
   },
   {
     id: "SDEV250",
     programCore: [],
-    programElective: [],
+    programElective: ["AAS"],
     data: {
       label: "SDEV 250 - JavaScript/TypeScript for Inter-Process Development",
     },
@@ -136,13 +168,13 @@ export const courseNodes = [
   {
     id: "SDEV260",
     programCore: [],
-    programElective: [],
+    programElective: ["AAS"],
     data: { label: "SDEV 260 - iOS Swift Application Development" },
   },
   {
     id: "SDEV264",
     programCore: [],
-    programElective: [],
+    programElective: ["AAS"],
     data: { label: "SDEV 264 - Mobile Application Development" },
   },
   {
@@ -154,12 +186,12 @@ export const courseNodes = [
   {
     id: "SDEV27X",
     programCore: [],
-    programElective: [],
+    programElective: ["AAS"],
     data: { label: "SDEV 27X - Certification" },
   },
   {
     id: "SVAD150",
-    programCore: [],
+    programCore: ["AAS"],
     programElective: [],
     data: { label: "SVAD 150 - Cloud Foundations" },
   },
@@ -171,8 +203,8 @@ export const courseNodes = [
   },
   {
     id: "VISC202",
-    programCore: [],
-    programElective: [],
+    programCore: ["fullStack"],
+    programElective: ["??? - not listed as AAS"],
     data: { label: "VISC 202 - User Experience/Interface (UX/UI) Design II" },
   },
 ];

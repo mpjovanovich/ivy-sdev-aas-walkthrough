@@ -13,8 +13,22 @@ const SemesterNode = ({ data }) => {
         minWidth: SEMESTER_WIDTH,
       }}
     >
-      <h3 style={{ margin: "0 0 10px 0" }}>{data.label}</h3>
-      <div className="semester-content">
+      <h3
+        style={{
+          margin: 0,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        {data.label}
+      </h3>
+      <div
+        className="semester-content"
+        style={{
+          marginTop: SEMESTER_PADDING, // Consistent spacing after title
+        }}
+      >
         <div
           className="drop-zone"
           style={{

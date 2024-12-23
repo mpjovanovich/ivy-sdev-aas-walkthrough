@@ -1,13 +1,8 @@
 const NODE_WIDTH = 150;
 const NODE_HEIGHT = 50;
+const NODE_VERTICAL_MARGIN = 40;
 
-import dagre from "dagre";
-
-import {
-  SEMESTER_HEIGHT,
-  SEMESTER_WIDTH,
-  SEMESTER_PADDING,
-} from "../components/SemesterNode";
+import { SEMESTER_WIDTH, SEMESTER_PADDING } from "../components/SemesterNode";
 
 export const getCourseEdges = (edges) => {
   return edges.map((edge) => {
@@ -22,59 +17,33 @@ export const getCourseEdges = (edges) => {
   });
 };
 
-export const getCourseNodes = (nodes, edges, semesterNodes) => {
-  const dagreGraph = new dagre.graphlib.Graph();
+export const getCourseNodes = (nodes, semesterNodes) => {
+  // This array keeps track of the y position of each semester node.
+  const startY = 60; // Probably should be calculated, but this is good enough for this little app.
+  const semesterYPositions = {
+    F1: startY,
+    F2: startY,
+    S3: startY,
+    S4: startY,
+    F5: startY,
+    F6: startY,
+    S7: startY,
+    S8: startY,
+  };
 
-  // Configure the graph
-  dagreGraph.setGraph({
-    rankdir: "LR",
-    align: "UL",
-    nodesep: 50,
-    ranksep: 80,
-    marginx: 50,
-    marginy: 50,
-    // ranker: "network-simplex", // More compact layout algorithm
-  });
-  dagreGraph.setDefaultEdgeLabel(() => ({}));
-
-  // Add nodes
-  nodes.forEach((node) => {
-    dagreGraph.setNode(node.id, {
-      width: NODE_WIDTH,
-      height: NODE_HEIGHT,
-    });
-  });
-
-  // Add edges
-  edges.forEach((edge) => {
-    dagreGraph.setEdge(edge.source, edge.target);
-  });
-
-  // Calculate layout
-  dagre.layout(dagreGraph);
-
-  // Return nodes with calculated positions
   return (
     nodes
       // Ignore anything that doesn't currently have a semester assigned to it.
       .filter((node) => node.parentId)
       .map((node) => {
-        const nodeWithPosition = dagreGraph.node(node.id);
-        console.log(
-          node.id,
-          node.parentId,
-          nodeWithPosition.y - NODE_HEIGHT / 2
-        );
+        const y = semesterYPositions[node.parentId];
+        semesterYPositions[node.parentId] += NODE_HEIGHT + NODE_VERTICAL_MARGIN;
+
         return {
           ...node,
           position: {
-            // These will already be on the x value of their parents, so just add padding
             x: SEMESTER_PADDING,
-            // y: nodeWithPosition.y - NODE_HEIGHT / 2,
-            y: Math.min(
-              nodeWithPosition.y - NODE_HEIGHT / 2,
-              SEMESTER_HEIGHT - SEMESTER_PADDING
-            ),
+            y: y,
           },
           targetPosition: "left",
           sourcePosition: "right",
@@ -84,7 +53,6 @@ export const getCourseNodes = (nodes, edges, semesterNodes) => {
             width: NODE_WIDTH,
             minheight: NODE_HEIGHT,
           },
-          // extent: "parent",
         };
       })
   );
@@ -98,16 +66,8 @@ export const getSemesterNodes = (nodes) => {
       position: { x: currentX, y: 0 },
       draggable: false,
       zIndex: -1,
-      style: {
-        background: "none",
-        border: "none",
-        padding: 0,
-        width: "auto",
-        height: "auto",
-      },
-      // extent: "parent",
     };
-    currentX += SEMESTER_WIDTH * 1.5;
+    currentX += (SEMESTER_WIDTH + SEMESTER_PADDING) * 1.2;
     return newNode;
   });
 };
