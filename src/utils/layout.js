@@ -3,7 +3,11 @@ const NODE_HEIGHT = 50;
 
 import dagre from "dagre";
 
-import { SEMESTER_WIDTH, SEMESTER_PADDING } from "../components/SemesterNode";
+import {
+  SEMESTER_HEIGHT,
+  SEMESTER_WIDTH,
+  SEMESTER_PADDING,
+} from "../components/SemesterNode";
 
 export const getCourseEdges = (edges) => {
   return edges.map((edge) => {
@@ -29,6 +33,7 @@ export const getCourseNodes = (nodes, edges, semesterNodes) => {
     ranksep: 80,
     marginx: 50,
     marginy: 50,
+    // ranker: "network-simplex", // More compact layout algorithm
   });
   dagreGraph.setDefaultEdgeLabel(() => ({}));
 
@@ -55,12 +60,21 @@ export const getCourseNodes = (nodes, edges, semesterNodes) => {
       .filter((node) => node.parentId)
       .map((node) => {
         const nodeWithPosition = dagreGraph.node(node.id);
+        console.log(
+          node.id,
+          node.parentId,
+          nodeWithPosition.y - NODE_HEIGHT / 2
+        );
         return {
           ...node,
           position: {
             // These will already be on the x value of their parents, so just add padding
             x: SEMESTER_PADDING,
-            y: nodeWithPosition.y - NODE_HEIGHT / 2,
+            // y: nodeWithPosition.y - NODE_HEIGHT / 2,
+            y: Math.min(
+              nodeWithPosition.y - NODE_HEIGHT / 2,
+              SEMESTER_HEIGHT - SEMESTER_PADDING
+            ),
           },
           targetPosition: "left",
           sourcePosition: "right",
@@ -70,6 +84,7 @@ export const getCourseNodes = (nodes, edges, semesterNodes) => {
             width: NODE_WIDTH,
             minheight: NODE_HEIGHT,
           },
+          // extent: "parent",
         };
       })
   );
@@ -90,6 +105,7 @@ export const getSemesterNodes = (nodes) => {
         width: "auto",
         height: "auto",
       },
+      // extent: "parent",
     };
     currentX += SEMESTER_WIDTH * 1.5;
     return newNode;

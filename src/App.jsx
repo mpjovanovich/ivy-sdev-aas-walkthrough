@@ -84,7 +84,6 @@ function Flow() {
               } else {
                 // Just remove parentId and keep the current position
                 const { parentId, ...nodeWithoutParent } = n;
-                console.log(node.position);
                 return {
                   ...nodeWithoutParent,
                   // There is a weird bug where the position is updating relative to the parent node

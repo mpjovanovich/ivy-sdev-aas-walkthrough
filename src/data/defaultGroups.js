@@ -9,6 +9,7 @@ export const defaultGroups = [
 
   // S3
   { id: "DBMS110", parentId: "S3" },
+  { id: "SDEV155", parentId: "S3" },
 
   // S4
 
@@ -17,6 +18,7 @@ export const defaultGroups = [
   // F6
 
   // S7
+  { id: "SDEV265", parentId: "S7" },
 
   // S8
 
@@ -25,7 +27,6 @@ export const defaultGroups = [
   { id: "CPIN279", parentId: "" },
   { id: "INFM209", parentId: "" },
   { id: "SDEV148", parentId: "" },
-  { id: "SDEV155", parentId: "" },
   { id: "SDEV160", parentId: "" },
   { id: "SDEV200", parentId: "" },
   { id: "SDEV210", parentId: "" },
@@ -38,7 +39,6 @@ export const defaultGroups = [
   { id: "SDEV257", parentId: "" },
   { id: "SDEV260", parentId: "" },
   { id: "SDEV264", parentId: "" },
-  { id: "SDEV265", parentId: "" },
   { id: "SDEV27X", parentId: "" },
   { id: "SVAD150", parentId: "" },
   { id: "VISC104", parentId: "" },

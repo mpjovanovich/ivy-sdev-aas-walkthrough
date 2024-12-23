@@ -147,8 +147,8 @@ export const courseNodes = [
   },
   {
     id: "SDEV265",
-    programCore: ["fullStack"],
-    programElective: ["AAS"],
+    programCore: ["AAS", "fullStack"],
+    programElective: [],
     data: { label: "SDEV 265 - Systems/Software Analysis and Projects" },
   },
   {
