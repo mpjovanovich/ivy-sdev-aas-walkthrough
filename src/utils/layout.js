@@ -2,7 +2,11 @@ const NODE_WIDTH = 150;
 const NODE_HEIGHT = 50;
 const NODE_VERTICAL_MARGIN = 40;
 
-import { SEMESTER_WIDTH, SEMESTER_PADDING } from "../components/SemesterNode";
+import {
+  SEMESTER_WIDTH,
+  SEMESTER_PADDING,
+  SEMESTER_HEIGHT,
+} from "../components/SemesterNode";
 
 export const getCourseEdges = (edges) => {
   return edges.map((edge) => {
@@ -31,7 +35,8 @@ export const getCourseNodes = (nodes, semesterNodes) => {
     S8: startY,
   };
 
-  return (
+  let returnNodes = [];
+  returnNodes = returnNodes.concat(
     nodes
       // Ignore anything that doesn't currently have a semester assigned to it.
       .filter((node) => node.parentId)
@@ -56,6 +61,42 @@ export const getCourseNodes = (nodes, semesterNodes) => {
         };
       })
   );
+
+  // We will write these out in a grid with eight columns underneath the semester nodes.
+  let baseY = SEMESTER_HEIGHT + NODE_HEIGHT * 2;
+  let currentRow = 0;
+  let currentColumn = 0;
+
+  returnNodes = returnNodes.concat(
+    nodes
+      // Ignore anything that doesn't currently have a semester assigned to it.
+      .filter((node) => !node.parentId)
+      .map((node) => {
+        const x = SEMESTER_PADDING + currentColumn * (NODE_WIDTH + 20);
+        const y = baseY + currentRow * (NODE_HEIGHT + NODE_VERTICAL_MARGIN);
+        currentColumn = (currentColumn + 1) % 8;
+        if (currentColumn === 0) {
+          currentRow++;
+        }
+        return {
+          ...node,
+          position: {
+            x: x,
+            y: y,
+          },
+          targetPosition: "left",
+          sourcePosition: "right",
+          style: {
+            borderWidth: node.programCore.includes("AAS") ? 3 : 1,
+            background: node.programCore.includes("fullStack") ? "#ddd" : "",
+            width: NODE_WIDTH,
+            minheight: NODE_HEIGHT,
+          },
+        };
+      })
+  );
+
+  return returnNodes;
 };
 
 export const getSemesterNodes = (nodes) => {

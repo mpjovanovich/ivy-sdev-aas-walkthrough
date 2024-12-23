@@ -103,32 +103,32 @@ export const courseNodes = [
     programElective: ["AAS"],
     data: { label: "SDEV 155 - Content Management Systems" },
   },
+  // {
+  //   id: "SDEV160",
+  //   programCore: ["AAS", "fullStack"],
+  //   programElective: [],
+  //   data: { label: "SDEV 160 - Programming With Data" },
+  // },
+  // {
+  //   id: "SDEV200",
+  //   programCore: [],
+  //   programElective: ["AAS"],
+  //   data: { label: "SDEV 200 - Java" },
+  // },
+  // {
+  //   id: "SDEV210",
+  //   programCore: [],
+  //   programElective: ["AAS"],
+  //   data: { label: "SDEV 210 - Systems Programming with Rust" },
+  // },
+  // {
+  //   id: "SDEV230",
+  //   programCore: [],
+  //   programElective: ["AAS"],
+  //   data: { label: "SDEV 230 - C++" },
+  // },
   {
-    id: "SDEV160",
-    programCore: ["AAS", "fullStack"],
-    programElective: [],
-    data: { label: "SDEV 160 - Programming With Data" },
-  },
-  {
-    id: "SDEV200",
-    programCore: [],
-    programElective: ["AAS"],
-    data: { label: "SDEV 200 - Java" },
-  },
-  {
-    id: "SDEV210",
-    programCore: [],
-    programElective: ["AAS"],
-    data: { label: "SDEV 210 - Systems Programming with Rust" },
-  },
-  {
-    id: "SDEV230",
-    programCore: [],
-    programElective: ["AAS"],
-    data: { label: "SDEV 230 - C++" },
-  },
-  {
-    id: "SDEV240",
+    id: "SDEV2xx",
     programCore: [],
     programElective: ["AAS"],
     data: { label: "SDEV 240 - C#" },
@@ -145,14 +145,14 @@ export const courseNodes = [
     programElective: ["AAS"],
     data: { label: "SDEV 248 - Advanced Simulation and Game Design" },
   },
-  {
-    id: "SDEV250",
-    programCore: [],
-    programElective: ["AAS"],
-    data: {
-      label: "SDEV 250 - JavaScript/TypeScript for Inter-Process Development",
-    },
-  },
+  // {
+  //   id: "SDEV250",
+  //   programCore: [],
+  //   programElective: ["AAS"],
+  //   data: {
+  //     label: "SDEV 250 - JavaScript/TypeScript for Inter-Process Development",
+  //   },
+  // },
   {
     id: "SDEV255",
     programCore: ["fullStack"],
@@ -165,12 +165,12 @@ export const courseNodes = [
     programElective: ["AAS"],
     data: { label: "SDEV 257 - Hybrid Apps and Frameworks" },
   },
-  {
-    id: "SDEV260",
-    programCore: [],
-    programElective: ["AAS"],
-    data: { label: "SDEV 260 - iOS Swift Application Development" },
-  },
+  // {
+  //   id: "SDEV260",
+  //   programCore: [],
+  //   programElective: ["AAS"],
+  //   data: { label: "SDEV 260 - iOS Swift Application Development" },
+  // },
   {
     id: "SDEV264",
     programCore: [],
@@ -228,8 +228,8 @@ export const courseEdges = [
   { id: "e-148-248", source: "SDEV148", target: "SDEV248" },
   { id: "e-153-155", source: "SDEV153", target: "SDEV155" },
   { id: "e-153-255", source: "SDEV153", target: "SDEV255" },
-  { id: "e-200-245", source: "SDEV200", target: "SDEV245" },
-  { id: "e-200-264", source: "SDEV200", target: "SDEV264" },
-  { id: "e-200-265", source: "SDEV200", target: "SDEV265" },
+  { id: "e-2xx-245", source: "SDEV2xx", target: "SDEV245" },
+  { id: "e-2xx-264", source: "SDEV2xx", target: "SDEV264" },
+  { id: "e-2xx-265", source: "SDEV2xx", target: "SDEV265" },
   { id: "e-255-257", source: "SDEV255", target: "SDEV257" },
 ];
