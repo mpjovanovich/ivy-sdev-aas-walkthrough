@@ -230,4 +230,5 @@ export const courseEdges = [
   { id: "e-2xx-264", source: "SDEV2xx", target: "SDEV264" },
   { id: "e-2xx-265", source: "SDEV2xx", target: "SDEV265" },
   { id: "e-255-257", source: "SDEV255", target: "SDEV257" },
+  { id: "e-255-265", source: "SDEV255", target: "SDEV265", recommended: true },
 ];
