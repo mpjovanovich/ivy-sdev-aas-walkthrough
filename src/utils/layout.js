@@ -15,6 +15,7 @@ export const getCourseEdges = (edges) => {
       style: {
         stroke: "#aaa",
         strokeWidth: 2,
+        stroke: edge.recommended ? "#ff69b4" : "#aaa",
         strokeDasharray: edge.corequisite ? "5 5" : "none",
       },
     };

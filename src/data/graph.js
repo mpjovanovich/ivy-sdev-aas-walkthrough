@@ -210,6 +210,7 @@ export const courseNodes = [
 ];
 
 export const courseEdges = [
+  { id: "e-104-153", source: "VISC104", target: "SDEV153", recommended: true },
   { id: "e-104-202", source: "VISC104", target: "VISC202" },
   { id: "e-109-209", source: "INFM109", target: "INFM209" },
   { id: "e-110-255", source: "DBMS110", target: "SDEV255" },
@@ -217,12 +218,9 @@ export const courseEdges = [
   { id: "e-120-153", source: "SDEV120", target: "SDEV153", corequisite: true },
   { id: "e-120-255", source: "SDEV120", target: "SDEV255" },
   { id: "e-140-160", source: "SDEV140", target: "SDEV160" },
-  { id: "e-140-200", source: "SDEV140", target: "SDEV200" },
-  { id: "e-140-210", source: "SDEV140", target: "SDEV210" },
-  { id: "e-140-230", source: "SDEV140", target: "SDEV230" },
-  { id: "e-140-240", source: "SDEV140", target: "SDEV240" },
+  { id: "e-140-2xx", source: "SDEV140", target: "SDEV2xx" },
   { id: "e-140-248", source: "SDEV140", target: "SDEV248" },
-  { id: "e-140-250", source: "SDEV140", target: "SDEV250" },
+  { id: "e-140-255", source: "SDEV140", target: "SDEV255", recommended: true },
   { id: "e-140-260", source: "SDEV140", target: "SDEV260" },
   { id: "e-140-269", source: "SDEV140", target: "CPIN269" },
   { id: "e-148-248", source: "SDEV148", target: "SDEV248" },
