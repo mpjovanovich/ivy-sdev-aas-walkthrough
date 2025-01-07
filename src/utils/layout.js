@@ -7,6 +7,7 @@ import {
   SEMESTER_PADDING,
   SEMESTER_HEIGHT,
 } from "../components/SemesterNode";
+import { programCoreStyles } from "../data/nodeStyles";
 
 export const getCourseEdges = (edges) => {
   return edges.map((edge) => {
@@ -45,6 +46,22 @@ export const getCourseNodes = (nodes, semesterNodes) => {
         const y = semesterYPositions[node.parentId];
         semesterYPositions[node.parentId] += NODE_HEIGHT + NODE_VERTICAL_MARGIN;
 
+        // Get the border width and background color for this node.
+        let borderWidth = 1;
+        let background = "";
+
+        node.programCore.forEach((core) => {
+          if (programCoreStyles[core]) {
+            if (programCoreStyles[core].borderWidth) {
+              console.log("borderWidth", programCoreStyles[core].borderWidth);
+              borderWidth = programCoreStyles[core].borderWidth;
+            }
+            if (programCoreStyles[core].background) {
+              background = programCoreStyles[core].background;
+            }
+          }
+        });
+
         return {
           ...node,
           position: {
@@ -54,8 +71,8 @@ export const getCourseNodes = (nodes, semesterNodes) => {
           targetPosition: "left",
           sourcePosition: "right",
           style: {
-            borderWidth: node.programCore.includes("AAS") ? 3 : 1,
-            background: node.programCore.includes("fullStack") ? "#ddd" : "",
+            borderWidth: borderWidth,
+            background: background,
             width: NODE_WIDTH,
             minheight: NODE_HEIGHT,
           },
