@@ -3,11 +3,11 @@ const NODE_HEIGHT = 50;
 const NODE_VERTICAL_MARGIN = 40;
 
 import {
-  SEMESTER_WIDTH,
-  SEMESTER_PADDING,
   SEMESTER_HEIGHT,
+  SEMESTER_PADDING,
+  SEMESTER_WIDTH,
 } from "../components/SemesterNode";
-import { programCoreStyles } from "../data/nodeStyles";
+import { programStyles } from "../data/nodeStyles";
 
 export const getCourseEdges = (edges) => {
   return edges.map((edge) => {
@@ -50,14 +50,14 @@ export const getCourseNodes = (nodes, semesterNodes) => {
         let borderWidth = 1;
         let background = "";
 
-        node.programCore.forEach((core) => {
-          if (programCoreStyles[core]) {
-            if (programCoreStyles[core].borderWidth) {
-              console.log("borderWidth", programCoreStyles[core].borderWidth);
-              borderWidth = programCoreStyles[core].borderWidth;
+        node.program.forEach((core) => {
+          if (programStyles[core]) {
+            if (programStyles[core].borderWidth) {
+              console.log("borderWidth", programStyles[core].borderWidth);
+              borderWidth = programStyles[core].borderWidth;
             }
-            if (programCoreStyles[core].background) {
-              background = programCoreStyles[core].background;
+            if (programStyles[core].background) {
+              background = programStyles[core].background;
             }
           }
         });
@@ -77,7 +77,7 @@ export const getCourseNodes = (nodes, semesterNodes) => {
             minheight: NODE_HEIGHT,
           },
         };
-      })
+      }),
   );
 
   // We will write these out in a grid with eight columns underneath the semester nodes.
@@ -105,13 +105,13 @@ export const getCourseNodes = (nodes, semesterNodes) => {
           targetPosition: "left",
           sourcePosition: "right",
           style: {
-            borderWidth: node.programCore.includes("AAS") ? 3 : 1,
-            background: node.programCore.includes("fullStack") ? "#ddd" : "",
+            // borderWidth: node.program.includes("AAS") ? 3 : 1,
+            // background: node.program.includes("fullStack") ? "#ddd" : "",
             width: NODE_WIDTH,
             minheight: NODE_HEIGHT,
           },
         };
-      })
+      }),
   );
 
   return returnNodes;

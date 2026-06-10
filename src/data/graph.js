@@ -11,168 +11,142 @@ export const semesterNodes = [
 ];
 
 export const courseNodes = [
-  // Gen Ed
-  {
-    id: "COMM101",
-    programCore: ["AAS"],
-    data: { label: "COMM 101 - Public Speaking" },
-  },
-  {
-    id: "ENGL111",
-    programCore: ["AAS"],
-    data: { label: "ENGL 111 - English Composition" },
-  },
-  {
-    id: "MATH136",
-    programCore: ["AAS"],
-    data: { label: "MATH 136 - College Algebra" },
-  },
-  {
-    id: "HUMANITIES",
-    programCore: ["AAS"],
-    data: { label: "Humanities Elective" },
-  },
-  {
-    id: "SCIENCE",
-    programCore: ["AAS"],
-    data: { label: "Science Elective" },
-  },
   // Technical
   {
     id: "CPIN269",
-    programCore: ["AAS"],
+    program: [],
     data: { label: "CPIN 269 - Information Technology Project Management" },
   },
   {
     id: "CPIN279",
-    programCore: ["AAS"],
+    program: [],
     data: { label: "CPIN 279 - Information Technology Capstone" },
   },
   {
     id: "DBMS110",
-    programCore: ["AAS", "fullStack"],
+    program: [],
     data: { label: "DBMS 110 - Database Management Systems" },
   },
   {
     id: "INFM109",
-    programCore: ["AAS"],
+    program: [],
     data: { label: "INFM 109 - Informatics and Human-Computer Interaction" },
   },
   {
     id: "INFM209",
-    programCore: [],
+    program: [],
     data: { label: "INFM 209 - Informatics and Human-Computer Interaction" },
   },
   {
     id: "SDEV120",
-    programCore: ["AAS", "fullStack"],
+    program: [],
     data: { label: "SDEV 120 - Computing Logic" },
   },
   {
     id: "SDEV140",
-    programCore: ["AAS", "fullStack"],
+    program: [],
     data: { label: "SDEV 140 - Introduction to Software Development" },
   },
   {
     id: "SDEV148",
-    programCore: [],
+    program: [],
     data: { label: "SDEV 148 - Intro to Game Development" },
   },
   {
     id: "SDEV153",
-    programCore: ["AAS", "fullStack"],
+    program: [],
     data: { label: "SDEV 153 - Website Development" },
   },
   {
     id: "SDEV155",
-    programCore: ["fullStack"],
+    program: [],
     data: { label: "SDEV 155 - Content Management Systems" },
   },
   // {
   //   id: "SDEV160",
-  //   programCore: ["AAS", "fullStack"],
+  //   program: [],
   //   data: { label: "SDEV 160 - Programming With Data" },
   // },
   // {
   //   id: "SDEV200",
-  //   programCore: [],
+  //   program: [],
   //   data: { label: "SDEV 200 - Java" },
   // },
   // {
   //   id: "SDEV210",
-  //   programCore: [],
+  //   program: [],
   //   data: { label: "SDEV 210 - Systems Programming with Rust" },
   // },
   // {
   //   id: "SDEV230",
-  //   programCore: [],
+  //   program: [],
   //   data: { label: "SDEV 230 - C++" },
   // },
   {
     id: "SDEV2xx",
-    programCore: [],
+    program: [],
     data: { label: "SDEV 240 - C#" },
   },
   {
     id: "SDEV245",
-    programCore: [],
+    program: [],
     data: { label: "SDEV 245 - Security and Secure Coding" },
   },
   {
     id: "SDEV248",
-    programCore: [],
+    program: [],
     data: { label: "SDEV 248 - Advanced Simulation and Game Design" },
   },
   // {
   //   id: "SDEV250",
-  //   programCore: [],
+  //   program: [],
   //   data: {
   //     label: "SDEV 250 - JavaScript/TypeScript for Inter-Process Development",
   //   },
   // },
   {
     id: "SDEV255",
-    programCore: ["fullStack"],
+    program: [],
     data: { label: "SDEV 255 - Web Application Development" },
   },
   {
     id: "SDEV257",
-    programCore: ["fullStack"],
+    program: [],
     data: { label: "SDEV 257 - Hybrid Apps and Frameworks" },
   },
   // {
   //   id: "SDEV260",
-  //   programCore: [],
+  //   program: [],
   //   data: { label: "SDEV 260 - iOS Swift Application Development" },
   // },
   {
     id: "SDEV264",
-    programCore: [],
+    program: [],
     data: { label: "SDEV 264 - Mobile Application Development" },
   },
   {
     id: "SDEV265",
-    programCore: ["AAS", "fullStack"],
+    program: [],
     data: { label: "SDEV 265 - Systems/Software Analysis and Projects" },
   },
   {
     id: "SDEV27X",
-    programCore: [],
+    program: [],
     data: { label: "SDEV 27X - Certification" },
   },
   {
     id: "SVAD150",
-    programCore: ["AAS"],
+    program: [],
     data: { label: "SVAD 150 - Cloud Foundations" },
   },
   {
     id: "VISC104",
-    programCore: ["AAS", "fullStack"],
+    program: [],
     data: { label: "VISC 104 - User Experience/Interface (UX/UI) I" },
   },
   {
     id: "VISC202",
-    programCore: ["fullStack"],
+    program: [],
     data: { label: "VISC 202 - User Experience/Interface (UX/UI) Design II" },
   },
 ];
