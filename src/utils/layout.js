@@ -7,7 +7,15 @@ import {
   SEMESTER_PADDING,
   SEMESTER_WIDTH,
 } from "../components/SemesterNode";
-import { programStyles } from "../data/nodeStyles";
+
+const partOfProgramStyles = {
+  "Technical Core": { borderWidth: 3, background: "#ddd" },
+  "Selective 1": { borderWidth: 1, background: "#fffed9" },
+  "Selective 2": { borderWidth: 1, background: "#ffd9d9" },
+};
+
+const getPartOfProgramStyle = (partOfProgram) =>
+  partOfProgramStyles[partOfProgram] ?? { borderWidth: 1, background: "" };
 
 export const getCourseEdges = (edges) => {
   return edges.map((edge) => {
@@ -17,7 +25,6 @@ export const getCourseEdges = (edges) => {
         stroke: "#aaa",
         strokeWidth: 2,
         stroke: edge.recommended ? "#ff69b4" : "#aaa",
-        strokeDasharray: edge.corequisite ? "5 5" : "none",
       },
     };
   });
@@ -46,21 +53,9 @@ export const getCourseNodes = (nodes, semesterNodes) => {
         const y = semesterYPositions[node.parentId];
         semesterYPositions[node.parentId] += NODE_HEIGHT + NODE_VERTICAL_MARGIN;
 
-        // Get the border width and background color for this node.
-        let borderWidth = 1;
-        let background = "";
-
-        node.program.forEach((core) => {
-          if (programStyles[core]) {
-            if (programStyles[core].borderWidth) {
-              console.log("borderWidth", programStyles[core].borderWidth);
-              borderWidth = programStyles[core].borderWidth;
-            }
-            if (programStyles[core].background) {
-              background = programStyles[core].background;
-            }
-          }
-        });
+        const { borderWidth, background } = getPartOfProgramStyle(
+          node.partOfProgram,
+        );
 
         return {
           ...node,
@@ -96,6 +91,10 @@ export const getCourseNodes = (nodes, semesterNodes) => {
         if (currentColumn === 0) {
           currentRow++;
         }
+        const { borderWidth, background } = getPartOfProgramStyle(
+          node.partOfProgram,
+        );
+
         return {
           ...node,
           position: {
@@ -105,10 +104,8 @@ export const getCourseNodes = (nodes, semesterNodes) => {
           targetPosition: "left",
           sourcePosition: "right",
           style: {
-            borderWidth: node.partOfProgram.includes("TechnicalCore") ? 3 : 1,
-            background: node.partOfProgram.includes("TechnicalCore")
-              ? "#ddd"
-              : "",
+            borderWidth,
+            background,
             width: NODE_WIDTH,
             minheight: NODE_HEIGHT,
           },
