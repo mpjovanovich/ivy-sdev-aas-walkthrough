@@ -105,8 +105,10 @@ export const getCourseNodes = (nodes, semesterNodes) => {
           targetPosition: "left",
           sourcePosition: "right",
           style: {
-            // borderWidth: node.program.includes("AAS") ? 3 : 1,
-            // background: node.program.includes("fullStack") ? "#ddd" : "",
+            borderWidth: node.partOfProgram.includes("TechnicalCore") ? 3 : 1,
+            background: node.partOfProgram.includes("TechnicalCore")
+              ? "#ddd"
+              : "",
             width: NODE_WIDTH,
             minheight: NODE_HEIGHT,
           },

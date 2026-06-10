@@ -11,142 +11,157 @@ export const semesterNodes = [
 ];
 
 export const courseNodes = [
-  // Technical
+  /* ********************
+   * Technical Core
+   ******************** */
+  // {
+  //   id: "CSCI101",
+  //   partOfProgram: [],
+  //   data: { label: "CSCI 101 - Computer Science I" },
+  // },
+  // {
+  //   id: "CSCI210",
+  //   partOfProgram: [],
+  //   data: { label: "CSCI 210 - Database Systems" },
+  // },
   {
     id: "CPIN269",
-    program: [],
+    partOfProgram: ["TechnicalCore"],
     data: { label: "CPIN 269 - Information Technology Project Management" },
   },
   {
     id: "CPIN279",
-    program: [],
+    partOfProgram: ["TechnicalCore"],
     data: { label: "CPIN 279 - Information Technology Capstone" },
   },
   {
     id: "DBMS110",
-    program: [],
+    partOfProgram: ["TechnicalCore"],
     data: { label: "DBMS 110 - Database Management Systems" },
   },
   {
     id: "INFM109",
-    program: [],
+    partOfProgram: ["TechnicalCore"],
     data: { label: "INFM 109 - Informatics and Human-Computer Interaction" },
   },
   {
-    id: "INFM209",
-    program: [],
-    data: { label: "INFM 209 - Informatics and Human-Computer Interaction" },
-  },
-  {
     id: "SDEV120",
-    program: [],
+    partOfProgram: ["TechnicalCore"],
     data: { label: "SDEV 120 - Computing Logic" },
   },
   {
     id: "SDEV140",
-    program: [],
+    partOfProgram: ["TechnicalCore"],
     data: { label: "SDEV 140 - Introduction to Software Development" },
   },
   {
-    id: "SDEV148",
-    program: [],
-    data: { label: "SDEV 148 - Intro to Game Development" },
-  },
-  {
     id: "SDEV153",
-    program: [],
+    partOfProgram: ["TechnicalCore"],
     data: { label: "SDEV 153 - Website Development" },
   },
   {
+    id: "SDEV160",
+    partOfProgram: ["TechnicalCore"],
+    data: { label: "SDEV 160 - Programming With Data" },
+  },
+  {
+    id: "SDEV265",
+    partOfProgram: ["TechnicalCore"],
+    data: { label: "SDEV 265 - Systems/Software Analysis and Projects" },
+  },
+  {
+    id: "SVAD150",
+    partOfProgram: ["TechnicalCore"],
+    data: { label: "SVAD 150 - Cloud Foundations" },
+  },
+
+  /* *********** TODO ********* */
+
+  {
+    id: "INFM209",
+    partOfProgram: [],
+    data: { label: "INFM 209 - Informatics and Human-Computer Interaction" },
+  },
+  {
+    id: "SDEV148",
+    partOfProgram: [],
+    data: { label: "SDEV 148 - Intro to Game Development" },
+  },
+  {
     id: "SDEV155",
-    program: [],
+    partOfProgram: [],
     data: { label: "SDEV 155 - Content Management Systems" },
   },
   // {
-  //   id: "SDEV160",
-  //   program: [],
-  //   data: { label: "SDEV 160 - Programming With Data" },
-  // },
-  // {
   //   id: "SDEV200",
-  //   program: [],
+  //   partOfProgram: [],
   //   data: { label: "SDEV 200 - Java" },
   // },
   // {
   //   id: "SDEV210",
-  //   program: [],
+  //   partOfProgram: [],
   //   data: { label: "SDEV 210 - Systems Programming with Rust" },
   // },
   // {
   //   id: "SDEV230",
-  //   program: [],
+  //   partOfProgram: [],
   //   data: { label: "SDEV 230 - C++" },
   // },
   {
-    id: "SDEV2xx",
-    program: [],
+    id: "SDEV240",
+    partOfProgram: [],
     data: { label: "SDEV 240 - C#" },
   },
   {
     id: "SDEV245",
-    program: [],
+    partOfProgram: [],
     data: { label: "SDEV 245 - Security and Secure Coding" },
   },
   {
     id: "SDEV248",
-    program: [],
+    partOfProgram: [],
     data: { label: "SDEV 248 - Advanced Simulation and Game Design" },
   },
   // {
   //   id: "SDEV250",
-  //   program: [],
+  //   partOfProgram: [],
   //   data: {
   //     label: "SDEV 250 - JavaScript/TypeScript for Inter-Process Development",
   //   },
   // },
   {
     id: "SDEV255",
-    program: [],
+    partOfProgram: [],
     data: { label: "SDEV 255 - Web Application Development" },
   },
   {
     id: "SDEV257",
-    program: [],
+    partOfProgram: [],
     data: { label: "SDEV 257 - Hybrid Apps and Frameworks" },
   },
   // {
   //   id: "SDEV260",
-  //   program: [],
+  //   partOfProgram: [],
   //   data: { label: "SDEV 260 - iOS Swift Application Development" },
   // },
   {
     id: "SDEV264",
-    program: [],
+    partOfProgram: [],
     data: { label: "SDEV 264 - Mobile Application Development" },
   },
   {
-    id: "SDEV265",
-    program: [],
-    data: { label: "SDEV 265 - Systems/Software Analysis and Projects" },
-  },
-  {
     id: "SDEV27X",
-    program: [],
+    partOfProgram: [],
     data: { label: "SDEV 27X - Certification" },
   },
   {
-    id: "SVAD150",
-    program: [],
-    data: { label: "SVAD 150 - Cloud Foundations" },
-  },
-  {
     id: "VISC104",
-    program: [],
+    partOfProgram: [],
     data: { label: "VISC 104 - User Experience/Interface (UX/UI) I" },
   },
   {
     id: "VISC202",
-    program: [],
+    partOfProgram: [],
     data: { label: "VISC 202 - User Experience/Interface (UX/UI) Design II" },
   },
 ];
