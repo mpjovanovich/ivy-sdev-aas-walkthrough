@@ -1,7 +1,5 @@
 # TODO
 
-- Update to reflect latest offerings.
-- Add style for technical core courses.
 - Update packages to fix vulnerabilities.
 - Publish
 - Show number of credit hours total on the graph.
